@@ -2,29 +2,32 @@ import React from 'react';
 import './style.css';
 
 export default function App() {
-  const name = 'Tati';
+  const firstName = 'Tati';
+  const lastName = 'Cheah';
+  const candyBought = 5;
+  const candy = 'KitKat';
 
   const age = 24;
 
   //age Calculation
   const ageCalculation = (
     <div>
-      <p>
-        {age > 20
-          ? 'Old. Both physically and in soul.'
-          : 'You a child'}
-      </p>
+      <p>{age > 20 ? 'Old. Both physically and in soul.' : 'You a child'}</p>
     </div>
   );
 
   //Mapping
-  const data = ['bitcoin', 'ethereum', 'doge'];
+  const data = [
+    { id: 1, crypto: 'bitcoin' },
+    { id: 2, crypto: 'ethereum' },
+    { id: 3, crypto: 'doge' },
+  ];
 
   const mapping = (
     <h1>
       <ul>
-        {data.map((crypto, idx) => {
-          return <li key={idx}> {crypto} </li>;
+        {data.map((list) => {
+          return <li key={list.id}> {list.crypto} </li>;
         })}
       </ul>
     </h1>
@@ -32,10 +35,14 @@ export default function App() {
 
   return (
     <div>
-      <h1>Hello {name}!</h1>
+      <h1>Hello {firstName}!</h1>
       <p>Calculation: 1 + 3 = {1 + 3}</p>
       {ageCalculation}
       {mapping}
+      <p>
+        {firstName} {lastName} bought {candyBought} {candy} worth $
+        {candyBought * 2}
+      </p>
     </div>
   );
 }
